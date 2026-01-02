@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: inv-db
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: local
+    volumes:
+      - pgdata:/var/lib/postgresql
+
+  mailpit:
+    image: axllent/mailpit:edge
+    container_name: inv-mailer
+    ports:
+      - '8036:8025' # Web UI
+      - '1036:1025' # SMTP
+    restart: unless-stopped
+
+volumes:
+  pgdata:
