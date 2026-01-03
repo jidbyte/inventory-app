@@ -16,12 +16,12 @@
 		<ThemeToggle />
 
 		<div class="flex gap-2">
-			<Button href="/">
+			<Button href="/auth/sign-up">
 				<Icon icon="lucide:user" class="size-4" />
 				<span>Register</span>
 			</Button>
 
-			<Button href="/login">
+			<Button href="/auth/sign-in">
 				<Icon icon="lucide:user" class="size-4" />
 				<span>Login</span>
 			</Button>
