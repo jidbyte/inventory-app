@@ -11,10 +11,11 @@
 	const routes = [
 		{ name: 'Overview', icon: 'solar:widget-5-bold', path: '/dashboard/overview' },
 		{ name: 'Products', icon: 'solar:box-minimalistic-bold', path: '/dashboard/products' },
-		{ name: 'Orders', icon: 'solar:cart-bold', path: '/dashboard/orders' },
-		{ name: 'Customers', icon: 'solar:user-bold', path: '/dashboard/customers' },
-		{ name: 'Analytics', icon: 'solar:chart-bold', path: '/dashboard/analytics' },
-		{ name: 'Settings', icon: 'solar:settings-bold', path: '/dashboard/settings' }
+		{ name: 'Sales', icon: 'solar:dollar-bold', path: '/dashboard/sales' },
+		{ name: 'Purchases', icon: 'solar:cart-bold', path: '/dashboard/purchases' },
+		{ name: 'Clients', icon: 'solar:user-bold', path: '/dashboard/clients' },
+		{ name: 'Vendors', icon: 'solar:suitcase-tag-bold', path: '/dashboard/vendors' },
+		{ name: 'Analytics', icon: 'solar:chart-bold', path: '/dashboard/analytics' }
 	];
 
 	let pathname = $derived(page.url.pathname);
@@ -24,7 +25,7 @@
 
 <aside
 	class={cn(
-		'fixed top-0 left-0 z-40 hidden border-r border-gray-600 shadow-sm transition-all duration-300 md:block',
+		'fixed top-0 left-0 z-40 hidden border-r border-gray-600 bg-gray-950 shadow-sm transition-all duration-300 md:block',
 		sidebar.isOpen ? 'w-56' : 'w-16'
 	)}
 >

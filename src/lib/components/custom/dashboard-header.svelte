@@ -13,7 +13,7 @@
 </script>
 
 <!-- Larger Screens Header -->
-<header class="sticky top-0 z-40 hidden border-b border-gray-600 md:block">
+<header class="sticky top-0 z-30 hidden border-b border-gray-600 bg-gray-950 md:block">
 	<div class="flex h-15 items-center justify-between gap-6 p-4 px-8">
 		<!-- Search Input -->
 		<div class="md:w-xs lg:w-sm">
@@ -49,7 +49,7 @@
 </header>
 
 <!-- Small Screens Header -->
-<header class="sticky top-0 z-40 block border-b border-gray-600 md:hidden">
+<header class="sticky top-0 z-40 block border-b border-gray-600 bg-gray-950 md:hidden">
 	<div class="flex h-15 items-center justify-between p-4">
 		<!-- Logo-->
 		<div
