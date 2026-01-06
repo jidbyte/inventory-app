@@ -25,7 +25,7 @@ export const GoogleAuthClient = async () => {
 	try {
 		await client.signIn.social({
 			provider: 'google',
-			callbackURL: '/dashboard/overview'
+			callbackURL: '/overview'
 		});
 	} catch (error) {
 		console.error('Google sign-in error:', error);
@@ -55,7 +55,7 @@ export const LoginClient = async ({ email, _password, rememberMe }: LoginProps) 
 			email,
 			password: _password,
 			rememberMe,
-			callbackURL: '/dashboard/overview'
+			callbackURL: '/overview'
 		});
 
 		return result;
@@ -105,7 +105,7 @@ export const UpdateProfileClient = async ({ image, firstname, lastname }: Update
 
 export const UpdateEmailClient = async (newEmail: string) => {
 	try {
-		const result = await client.changeEmail({ newEmail, callbackURL: '/dashboard' });
+		const result = await client.changeEmail({ newEmail, callbackURL: '' });
 
 		if (result.error) {
 			return toast.error(result.error.message || 'Failed to update email');

@@ -30,9 +30,7 @@ export const productColumns: ColumnDef<Product>[] = [
 		},
 		cell: ({ row }) => {
 			const name = row.getValue('name') as string;
-			return `<div class="max-w-60 min-w-30 overflow-hidden">
-				<p class="font-medium line-clamp-2 text-sm text-ellipsis wrap-break-words">${name}</p>
-			</div>`;
+			return name;
 		}
 	},
 	{
@@ -60,7 +58,7 @@ export const productColumns: ColumnDef<Product>[] = [
 			const quantity = row.getValue('quantity') as number;
 			const restockLevel = row.original.restockLevel || 0;
 			const textColor = quantity < restockLevel ? 'text-destructive' : 'text-accent';
-			return `<span class="font-medium ${textColor}">${quantity.toLocaleString()}</span>`;
+			return quantity;
 		}
 	},
 	{
@@ -70,7 +68,7 @@ export const productColumns: ColumnDef<Product>[] = [
 		},
 		cell: ({ row }) => {
 			const price = row.getValue('price') as number;
-			return `<span class="text-emerald-700 dark:text-emerald-300 font-medium">$${(price / 100).toFixed(2)}</span>`;
+			return (price / 100).toFixed(2);
 		}
 	},
 	{
@@ -84,7 +82,7 @@ export const productColumns: ColumnDef<Product>[] = [
 				addSuffix: true,
 				includeSeconds: false
 			}).replace(/^about /, '');
-			return `<span class="text-sm">${timeAgo}</span>`;
+			return timeAgo;
 		}
 	},
 	{
@@ -98,7 +96,7 @@ export const productColumns: ColumnDef<Product>[] = [
 				addSuffix: true,
 				includeSeconds: false
 			}).replace(/^about /, '');
-			return `<span class="text-sm">${timeAgo}</span>`;
+			return timeAgo;
 		}
 	},
 	{

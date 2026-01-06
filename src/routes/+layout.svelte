@@ -1,8 +1,8 @@
 <script lang="ts">
-	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import { Toaster } from 'svelte-french-toast';
 	import { ModeWatcher } from 'mode-watcher';
+	import { Toaster } from 'svelte-french-toast';
+	import './layout.css';
 
 	let { children } = $props();
 </script>

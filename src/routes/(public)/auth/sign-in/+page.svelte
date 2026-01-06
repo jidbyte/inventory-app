@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { resolve } from '$app/paths';
 	import Logo from '$lib/components/custom/logo.svelte';
+	import Message from '$lib/components/custom/message.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { emailLogin } from '$lib/modules/auth/auth.remote';
 	import { GoogleAuthClient, LoginClient } from '$lib/modules/auth/client';
 	import Icon from '@iconify/svelte';
-	import Message from '$lib/components/custom/message.svelte';
 
 	const { email, _password, rememberMe } = emailLogin.fields;
 
@@ -53,12 +52,14 @@
 			<form
 				{...emailLogin.enhance(async ({ submit, form, data }) => {
 					await submit();
+
 					if (emailLogin.result?.ok) {
 						const res = await LoginClient(data);
+
 						if (res?.error) {
 							msg = res.error?.message!;
 						} else {
-							goto(resolve('/dashboard/overview'));
+							goto('/overview');
 							form.reset();
 						}
 					}
@@ -124,7 +125,11 @@
 						class="mt-2 w-full bg-sky-600 text-white"
 						disabled={!!emailLogin.pending}
 					>
-						{emailLogin.pending ? 'Signing in...' : 'Sign In'}
+						{#if emailLogin.pending}
+							<Icon icon="eos-icons:three-dots-loading" class="size-12" />
+						{:else}
+							Sign In
+						{/if}
 					</Button>
 				</div>
 			</form>

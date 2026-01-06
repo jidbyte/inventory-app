@@ -1,26 +1,25 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
+	import { SignOutClient } from '$lib/modules/auth/client';
 	import { sidebar } from '$lib/states/sidebar.svelte';
 	import Icon from '@iconify/svelte';
+	import { slide } from 'svelte/transition';
 	import { cn } from 'tailwind-variants';
 	import Button from '../ui/button/button.svelte';
-	import { SignOutClient } from '$lib/modules/auth/client';
-	import { slide } from 'svelte/transition';
+	import { Navigate } from '$lib/utils/helpers';
 
 	const routes = [
-		{ name: 'Overview', icon: 'solar:widget-5-bold', path: '/dashboard/overview' },
-		{ name: 'Products', icon: 'solar:box-minimalistic-bold', path: '/dashboard/products' },
-		{ name: 'Sales', icon: 'solar:dollar-bold', path: '/dashboard/sales' },
-		{ name: 'Purchases', icon: 'solar:cart-bold', path: '/dashboard/purchases' },
-		{ name: 'Clients', icon: 'solar:user-bold', path: '/dashboard/clients' },
-		{ name: 'Vendors', icon: 'solar:suitcase-tag-bold', path: '/dashboard/vendors' },
-		{ name: 'Analytics', icon: 'solar:chart-bold', path: '/dashboard/analytics' }
+		{ name: 'Overview', icon: 'solar:widget-5-bold', path: '/overview' },
+		{ name: 'Products', icon: 'solar:box-minimalistic-bold', path: '/products' },
+		{ name: 'Sales', icon: 'solar:dollar-bold', path: '/sales' },
+		{ name: 'Purchases', icon: 'solar:cart-bold', path: '/purchases' },
+		{ name: 'Clients', icon: 'solar:user-bold', path: '/clients' },
+		{ name: 'Vendors', icon: 'solar:suitcase-tag-bold', path: '/vendors' },
+		{ name: 'Analytics', icon: 'solar:chart-bold', path: '/analytics' }
 	];
 
 	let pathname = $derived(page.url.pathname);
-
-	const Navigate = (path: string) => goto(path);
 </script>
 
 <aside

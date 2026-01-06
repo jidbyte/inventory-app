@@ -1,11 +1,11 @@
 <script lang="ts">
-	import toast from 'svelte-french-toast';
-	import { Input } from '$lib/components/ui/input';
+	import Message from '$lib/components/custom/message.svelte';
 	import { Button } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
 	import { passwordRequest } from '$lib/modules/auth/auth.remote';
 	import { PasswordRequestClient } from '$lib/modules/auth/client';
 	import Icon from '@iconify/svelte';
-	import Message from '$lib/components/custom/message.svelte';
+	import toast from 'svelte-french-toast';
 
 	const { email } = passwordRequest.fields;
 
@@ -121,13 +121,13 @@
 							disabled={passwordRequest.pending > 0}
 						>
 							{#if passwordRequest.pending > 0}
-								<Icon icon="svg-spinners:90-ring-with-bg" class="mr-2 size-5" />
-								Sending...
+								<Icon icon="eos-icons:three-dots-loading" class="size-12"/>
 							{:else}
 								Send reset instructions
 							{/if}
 						</Button>
 					</form>
+
 
 					<!-- Footer Links -->
 					<div class="mt-6 text-center">

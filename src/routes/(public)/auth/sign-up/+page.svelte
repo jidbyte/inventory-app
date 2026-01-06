@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Logo from '$lib/components/custom/logo.svelte';
+	import Message from '$lib/components/custom/message.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { emailSignup } from '$lib/modules/auth/auth.remote';
 	import { GoogleAuthClient, SignUpClient } from '$lib/modules/auth/client';
 	import Icon from '@iconify/svelte';
-	import Message from '$lib/components/custom/message.svelte';
 
 	const { firstname, lastname, email, _password } = emailSignup.fields;
 
@@ -128,7 +128,11 @@
 					class="mt-2 w-full bg-sky-600 text-white"
 					disabled={!!emailSignup.pending}
 				>
-					{emailSignup.pending ? 'Signing up...' : 'Sign Up'}
+					{#if emailSignup.pending}
+							<Icon icon="eos-icons:three-dots-loading" class="size-12"/>
+						{:else}
+							Sign Up
+					{/if}
 				</Button>
 			</form>
 

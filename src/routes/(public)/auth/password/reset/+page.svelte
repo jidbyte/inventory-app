@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { onMount } from 'svelte';
 	import { page } from '$app/state';
+	import Message from '$lib/components/custom/message.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { passwordReset } from '$lib/modules/auth/auth.remote';
 	import { PasswordResetClient } from '$lib/modules/auth/client';
-	import toast from 'svelte-french-toast';
 	import Icon from '@iconify/svelte';
-	import Message from '$lib/components/custom/message.svelte';
+	import { onMount } from 'svelte';
+	import toast from 'svelte-french-toast';
 
 	const { password, confirmPassword, token } = passwordReset.fields;
 
@@ -109,8 +109,7 @@
 						disabled={!!passwordReset.pending}
 					>
 						{#if passwordReset.pending}
-							<Icon icon="svg-spinners:90-ring-with-bg" class="mr-2 size-5" />
-							Resetting password...
+							<Icon icon="eos-icons:three-dots-loading" class="size-12"/>
 						{:else}
 							Reset password
 						{/if}

@@ -12,6 +12,7 @@
 	import * as Select from '$lib/components/ui/select';
 	import { Button } from '$lib/components/ui/button';
 	import ProductTableFilter from './product-table-filter.svelte';
+	import { Navigate } from '$lib/utils/helpers';
 
 	type DataTableProps<TData, TValue> = {
 		columns: ColumnDef<TData, TValue>[];
@@ -123,7 +124,10 @@
 			<!-- Table Content -->
 			<Table.Body>
 				{#each table.getRowModel().rows as row (row.id)}
-					<Table.Row data-state={row.getIsSelected() && 'selected'}>
+					<Table.Row
+						onclick={() => Navigate(`/products/${(row.original as { id: string }).id}`)}
+						data-state={row.getIsSelected() && 'selected'}
+					>
 						{#each row.getVisibleCells() as cell (cell.id)}
 							<Table.Cell>
 								<FlexRender content={cell.column.columnDef.cell} context={cell.getContext()} />
@@ -139,7 +143,7 @@
 		</Table.Root>
 	</div>
 
-	<!-- Pagination Section -->
+	<!-- Table Footer - Pagination -->
 	<div class="mt-4 flex items-center justify-between">
 		<div class="flex items-center space-x-6">
 			<div class="flex items-center space-x-2">
