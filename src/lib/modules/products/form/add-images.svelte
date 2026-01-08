@@ -236,7 +236,7 @@
 							<button
 								type="button"
 								onclick={() => removeUploadedImage(index)}
-								class="rounded-full bg-red-500 p-2 text-white hover:bg-red-600"
+								class="rounded-full bg-red-500 p-2 text-white hover:bg-red-700"
 								aria-label="Delete uploaded image {index + 1}"
 							>
 								<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
