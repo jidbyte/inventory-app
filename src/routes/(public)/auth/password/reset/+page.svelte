@@ -8,7 +8,6 @@
 	import { PasswordResetClient } from '$lib/modules/auth/client';
 	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
-	import toast from 'svelte-french-toast';
 
 	const { password, confirmPassword, token } = passwordReset.fields;
 
@@ -20,7 +19,7 @@
 		resetToken = page.url.searchParams.get('token') || '';
 
 		if (!resetToken) {
-			toast.error('Invalid or missing reset token');
+			// tost.error('Invalid or missing reset token');
 			goto('/auth/password/forgot');
 		} else {
 			tokenValid = true;
@@ -58,7 +57,7 @@
 							if (res?.error) {
 								message = res.error.message!;
 							} else {
-								toast.success('Password reset successful. Redirecting to sign in...');
+								// tost.success('Password reset successful. Redirecting to sign in...');
 								form.reset();
 								setTimeout(() => {
 									goto('/auth/sign-in');
@@ -109,7 +108,7 @@
 						disabled={!!passwordReset.pending}
 					>
 						{#if passwordReset.pending}
-							<Icon icon="eos-icons:three-dots-loading" class="size-12"/>
+							<Icon icon="eos-icons:three-dots-loading" class="size-12" />
 						{:else}
 							Reset password
 						{/if}

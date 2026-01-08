@@ -5,7 +5,6 @@
 	import { passwordRequest } from '$lib/modules/auth/auth.remote';
 	import { PasswordRequestClient } from '$lib/modules/auth/client';
 	import Icon from '@iconify/svelte';
-	import toast from 'svelte-french-toast';
 
 	const { email } = passwordRequest.fields;
 
@@ -93,7 +92,7 @@
 									msg = res.error.message!;
 								} else {
 									emailSent = true;
-									toast.success('Reset instructions sent to your email');
+									// tost.success('Reset instructions sent to your email');
 									form.reset();
 								}
 							}
@@ -121,13 +120,12 @@
 							disabled={passwordRequest.pending > 0}
 						>
 							{#if passwordRequest.pending > 0}
-								<Icon icon="eos-icons:three-dots-loading" class="size-12"/>
+								<Icon icon="eos-icons:three-dots-loading" class="size-12" />
 							{:else}
 								Send reset instructions
 							{/if}
 						</Button>
 					</form>
-
 
 					<!-- Footer Links -->
 					<div class="mt-6 text-center">

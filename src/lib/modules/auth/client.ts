@@ -1,7 +1,6 @@
 import { goto } from '$app/navigation';
 import { resolve } from '$app/paths';
 import { createAuthClient } from 'better-auth/svelte';
-import toast from 'svelte-french-toast';
 import type {
 	LoginProps,
 	ResetPasswordProps,
@@ -29,7 +28,7 @@ export const GoogleAuthClient = async () => {
 		});
 	} catch (error) {
 		console.error('Google sign-in error:', error);
-		toast.error('Request failed. Please try again.');
+		// tost.error('Request failed. Please try again.');
 	}
 };
 
@@ -45,7 +44,7 @@ export const SignUpClient = async ({ firstname, lastname, email, _password }: Si
 		return result;
 	} catch (error) {
 		console.error('Error signing up:', error);
-		toast.error('Request failed. Please try again.');
+		// toast.error('Request failed. Please try again.');
 	}
 };
 
@@ -61,7 +60,7 @@ export const LoginClient = async ({ email, _password, rememberMe }: LoginProps) 
 		return result;
 	} catch (error) {
 		console.error('Error signing in:', error);
-		toast.error('Request failed. Please try again.');
+		// toast.error('Request failed. Please try again.');
 	}
 };
 
@@ -71,7 +70,8 @@ export const PasswordRequestClient = async (email: string) => {
 		return result;
 	} catch (error) {
 		console.error('Error signing in:', error);
-		toast.error('Request failed. Please try again.');
+		// 	toast.error('Request failed. Please try again.');
+		// }
 	}
 };
 
@@ -81,7 +81,7 @@ export const PasswordResetClient = async ({ password, token }: ResetPasswordProp
 		return result;
 	} catch (error) {
 		console.error('Error signing in:', error);
-		toast.error('Request failed. Please try again.');
+		// tost.error('Request failed. Please try again.');
 	}
 };
 
@@ -93,13 +93,13 @@ export const UpdateProfileClient = async ({ image, firstname, lastname }: Update
 		});
 
 		if (result.error) {
-			return toast.error(result.error.message || 'Failed to update profile');
+			// return toast.error(result.error.message || 'Failed to update profile');
 		}
 
-		toast.success('User profile updated successfully');
+		// tost.success('User profile updated successfully');
 	} catch (error) {
 		console.error('Update error:', error);
-		toast.error('Request failed. Please try again.');
+		// toast.error('Request failed. Please try again.');
 	}
 };
 
@@ -108,13 +108,13 @@ export const UpdateEmailClient = async (newEmail: string) => {
 		const result = await client.changeEmail({ newEmail, callbackURL: '' });
 
 		if (result.error) {
-			return toast.error(result.error.message || 'Failed to update email');
+			// return toast.error(result.error.message || 'Failed to update email');
 		}
 
-		toast.success('Email updated successfully');
+		// toast.success('Email updated successfully');
 	} catch (error) {
 		console.error('Update error:', error);
-		toast.error('Request failed. Please try again.');
+		// toast.error('Request failed. Please try again.');
 	}
 };
 
@@ -131,16 +131,17 @@ export const UpdatePasswordClient = async ({
 
 		if (error) {
 			if (error.code === 'INVALID_PASSWORD') {
-				return toast.error('Invalid password. Enter the correct current password');
+				return;
+				// return toast.error('Invalid password. Enter the correct current password');
 			}
 
-			return toast.error(error.message || 'Failed to update password');
+			// return toast.error(error.message || 'Failed to update password');
 		}
 
-		toast.success('Password updated successfully');
+		// toast.success('Password updated successfully');
 	} catch (error) {
 		console.error('Update error:', error);
-		toast.error('Failed to update password');
+		// toast.error('Failed to update password');
 	}
 };
 
@@ -149,12 +150,13 @@ export const DeleteAccountClient = async (password: string) => {
 		const result = await client.deleteUser({ password, callbackURL: '/' });
 
 		if (result.error) {
-			return toast.error(result.error.message || 'Failed to delete account');
+			return;
+			// return toast.error(result.error.message || 'Failed to delete account');
 		}
 
-		return toast.success('Account deleted successfully');
+		// return toast.success('Account deleted successfully');
 	} catch (error) {
 		console.error('Delete error:', error);
-		toast.error('Failed to delete account');
+		// toast.error('Failed to delete account');
 	}
 };

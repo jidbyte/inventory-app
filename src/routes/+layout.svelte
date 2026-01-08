@@ -1,7 +1,6 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import { ModeWatcher } from 'mode-watcher';
-	import { Toaster } from 'svelte-french-toast';
 	import './layout.css';
 
 	let { children } = $props();
@@ -10,7 +9,7 @@
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <main>
-	<Toaster />
+	<!-- <Toster /> -->
 	<ModeWatcher defaultMode="dark" />
 
 	{@render children()}

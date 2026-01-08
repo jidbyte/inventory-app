@@ -13,7 +13,6 @@
 	} from '$lib/components/ui/dialog/index.js';
 	import { deleteProduct, getProductById } from '$lib/modules/products/server/products.remote';
 	import Icon from '@iconify/svelte';
-	import toast from 'svelte-french-toast';
 
 	let { params } = $props();
 
@@ -21,9 +20,10 @@
 		const result = await deleteProduct(id);
 		if (result?.success) {
 			goto('/products');
-			toast.success('Product deleted successfully');
+			// tost.success('Product deleted successfully');
 		} else {
-			toast.success(result.error?.message || 'Request failed!');
+			// tost.error(result.error?.message || 'Request failed!');
+			console.log(result.error?.message);
 		}
 	}
 </script>
@@ -35,14 +35,24 @@
 			<span>Loading product...</span>
 		</div>
 	{:then product}
-		<div class="space-y-4">
+		<div class="space-y-4 p-8">
 			<div>
 				<div class="font-medium">{product.name}</div>
 				<div class="text-sm text-muted-foreground">{product.sku}</div>
+				<div class="text-sm text-muted-foreground">{product.id}</div>
+			</div>
+
+			<div>
+				{#each product.categories as category}
+					<span class="m-4 underline">{category.name}</span>
+				{/each}
 			</div>
 
 			<Dialog>
-				<DialogTrigger class={buttonVariants({ variant: 'destructive' })}>
+				<DialogTrigger
+					onclick={() => console.log(product)}
+					class={buttonVariants({ variant: 'destructive' })}
+				>
 					Delete product
 				</DialogTrigger>
 

@@ -34,7 +34,16 @@ export const createProductSchema = z.object({
 	restockLevel: numericString('Restock level'),
 	optimalLevel: numericString('Optimal level'),
 	cost: numericString('Cost'),
-	price: numericString('Price')
+	price: numericString('Price'),
+	categories: z
+		.array(
+			z
+				.string()
+				.min(1, 'Category name is required')
+				.max(50, 'Category name must not exceed 50 characters')
+		)
+		.optional(),
+	images: z.array(z.string()).max(5, 'Maximum 5 images allowed').optional().default([])
 });
 
 export const updateProductSchema = createProductSchema.partial().extend({

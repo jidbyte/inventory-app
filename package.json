@@ -54,6 +54,8 @@
 		"vite": "^7.2.6"
 	},
 	"dependencies": {
+		"@aws-sdk/client-s3": "^3.964.0",
+		"@aws-sdk/s3-request-presigner": "^3.964.0",
 		"@internationalized/date": "^3.10.1",
 		"better-auth": "^1.4.10",
 		"bits-ui": "^2.14.4",
@@ -62,7 +64,6 @@
 		"mode-watcher": "^1.1.0",
 		"nodemailer": "^7.0.12",
 		"postgres": "^3.4.7",
-		"svelte-french-toast": "^1.2.0",
 		"zod": "^4.3.4"
 	}
 }
